@@ -1,0 +1,25 @@
+{
+  "name": "hivetek-js",
+  "version": "1.0.1",
+  "description": "This is a simple jQuery function wrapper.",
+  "main": "src/hivetek.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milhouse1337/hivetek-js.git"
+  },
+  "author": "Pascal Meunier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/milhouse1337/hivetek-js/issues"
+  },
+  "homepage": "https://github.com/milhouse1337/hivetek-js"
+}
