@@ -42,30 +42,22 @@ $(document).ready(function() {
 ```javascript
 // Simple GET request.
 $.hivetek.doAjaxGet('/example', {'foo': 'bar'}, function(data) {
-
-    console.log(data);
-
+    // console.log(data);
 }, function(error) {
-
-    console.log(error);
-
+    // console.log(error);
 });
 ```
 
 ```javascript
 // Simple POST request.
 $.hivetek.doAjaxPOST('/example', {'foo': 'bar'}, function(data) {
-
-    console.log(data);
-
+    // console.log(data);
 }, function(error) {
-
-    console.log(error);
-
+    // console.log(error);
 });
 ```
 
-### Modal (with fancyBox).
+### Modal (with fancyBox)
 
 ```javascript
 $.hivetek.doAjaxFancybox('/example', {'foo': 'bar'}, false); // Open modal.
