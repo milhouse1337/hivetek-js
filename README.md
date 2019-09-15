@@ -21,13 +21,13 @@ You can load the script from the CDN.
 
 ## Usage
 
-Here is a few basic functions you can use.
+There are a few basic functions you can use.
 
 ```html
 <script>
 $(document).ready(function() {
 
-    $.hivetek.fixAjaxToken(); // Add `X-CSRF-TOKEN` header on all AJAX requests.
+    $.hivetek.loadTokenFromMeta(); // Add `X-CSRF-TOKEN` header on all AJAX requests.
     $.hivetek.loadLegacy(); // Inject some functions on the `window` object.
 
     $.hivetek.config('fadein_delay', 200); // Update fadeIn animation delay.
@@ -50,7 +50,7 @@ $.hivetek.doAjaxGet('/example', {'foo': 'bar'}, function(data) {
 
 ```javascript
 // Simple POST request.
-$.hivetek.doAjaxPOST('/example', {'foo': 'bar'}, function(data) {
+$.hivetek.doAjaxPost('/example', {'foo': 'bar'}, function(data) {
     // console.log(data);
 }, function(error) {
     // console.log(error);
@@ -67,7 +67,8 @@ $.hivetek.closeModal(); // Close modal.
 ### Modal (with Bootstrap)
 
 ```javascript
-$.hivetek.doAjaxModal('/example', {'foo': 'bar'}, false); // WIP.
+$.hivetek.doAjaxModal('/example', {'foo': 'bar'}, false); // Open modal.
+$.hivetek.closeModal(); // Close modal.
 ```
 
 ## Build
