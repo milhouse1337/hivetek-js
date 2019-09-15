@@ -2,7 +2,7 @@
 
 [![Tested with jQuery 1.5+](https://img.shields.io/badge/jQuery-1.5+-0769AD.svg)](https://jquery.com/)
 [![Tested with fancyBox 2.x](https://img.shields.io/badge/fancyBox-2.x-FF5268.svg)](https://fancyapps.com/fancybox/)
-[![Version 1.0.1](https://img.shields.io/badge/Version-1.0.1-success.svg)](#)
+[![Version 1.0.2](https://img.shields.io/badge/Version-1.0.1-success.svg)](#)
 
 This is a simple jQuery function wrapper used at [HiveTek](https://www.hivetek.com/) and [Trinary](https://www.trinary.ca/).
 

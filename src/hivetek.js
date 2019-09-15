@@ -1,7 +1,7 @@
 /**
  *
  * HiveTek jQuery Toolkit (hivetek.js)
- * Version: 1.0.1
+ * Version: 1.0.2
  * Required: jQuery 1.5+
  * Optional: fancyBox 2.x
  * URL: https://github.com/milhouse1337/hivetek-js
@@ -419,29 +419,29 @@
         if ($('#modalax-wrap').length == 0) {
 
             $('body').append(`
-                <div id="modalax-wrap" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalaxLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content animated fadeIn">
-                        <!--
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="modalaxLabel">New message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        -->
-                        <div class="modal-body">
-                            <!-- AJAX -->
-                        </div>
-                        <!--
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Valider</button>
-                        </div>
-                        -->
-                        </div>
-                    </div>
-                </div>`);
+<div id="modalax-wrap" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalaxLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content animated fadeIn">
+        <!--
+        <div class="modal-header">
+        <h5 class="modal-title" id="modalaxLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        -->
+        <div class="modal-body">
+            <!-- AJAX -->
+        </div>
+        <!--
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Valider</button>
+        </div>
+        -->
+        </div>
+    </div>
+</div>`);
 
         }
 
