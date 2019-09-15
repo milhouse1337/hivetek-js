@@ -287,6 +287,194 @@
 
     };
 
+    // Bootstrap modal.
+    $.fn.hivetek.doAjaxModal = function(url, args, lock, callback, error) {
+
+        // Default.
+        url = typeof url !== 'undefined' ? url : '';
+        args = typeof args !== 'undefined' ? args : {};
+        lock = typeof lock !== 'undefined' ? lock : false;
+        callback = typeof callback !== 'undefined' ? callback : function() {};
+        error = typeof error !== 'undefined' ? error : function() {};
+
+        $.fn.hivetek.initModal();
+
+        $('#modalax-spinner').show();
+
+        // Make AJAX query.
+        $.ajax({
+
+            url: url,
+            type: 'GET',
+            data: args
+
+        }).done(function (output) {
+
+            $('#modalax-spinner').hide();
+
+            // Show modal.
+            $.fn.hivetek.showModal(output, lock);
+
+            // Bind submit.
+            $('#modalax-wrap .modal-body form').on('submit', function(e){
+
+                e.preventDefault();
+                // var form = $(e.delegateTarget);
+                // var args = form.serialize();
+                var args = new FormData($(this)[0]);
+                $.fn.hivetek.doAjaxModalPostForm(url, args, lock, callback, error);
+
+                return false;
+            });
+
+            callback(output);
+
+        }).fail(function (e) {
+
+            $.fn.hivetek.showModal(e.responseText, lock);
+
+            error(e);
+
+        });
+
+        return true;
+    }
+
+    $.fn.hivetek.doAjaxModalPostForm = function(url, args, lock, callback, error) {
+
+        // Default.
+        url = typeof url !== 'undefined' ? url : '';
+        args = typeof args !== 'undefined' ? args : {};
+        lock = typeof lock !== 'undefined' ? lock : false;
+        callback = typeof callback !== 'undefined' ? callback : function() {};
+        error = typeof error !== 'undefined' ? error : function() {};
+
+        $('#modalax-wrap').modal('hide');
+
+        // Lock buttons.
+        $('#modalax-wrap .modal-body form button[type="submit"]').attr('disabled', '');
+        $('#modalax-wrap .modal-body form button[type="submit"]').html('...');
+
+        $('#modalax-spinner').show();
+
+        // Make AJAX query.
+        $.ajax({
+
+            url: url,
+            type: 'POST',
+            data: args,
+            cache: false,
+            contentType: false,
+            processData: false
+
+        }).done(function (output) {
+
+            $('#modalax-spinner').hide();
+
+            // Show modal.
+            $.fn.hivetek.showModal(output, lock);
+
+            // Bind submit.
+            $('#modalax-wrap .modal-body form').on('submit', function(e){
+
+                e.preventDefault();
+                // var form = $(e.delegateTarget);
+                // var args = form.serialize();
+                var args = new FormData($(this)[0]);
+                $.fn.hivetek.doAjaxModalPostForm(url, args, lock, callback, error);
+
+                return false;
+            });
+
+            callback(output);
+
+        }).fail(function (e) {
+
+            $.fn.hivetek.showModal(e.responseText, lock);
+
+            error(e);
+
+        });
+
+        return true;
+    }
+
+    $.fn.hivetek.showModal = function(output, lock) {
+
+        var modal = $('#modalax-wrap');
+        modal.find('.modal-body').html(output);
+
+        var options = {};
+        if (lock) {
+            options = {backdrop: 'static', keyboard: false};
+        }
+
+        modal.modal(options);
+
+        return true;
+    }
+
+    $.fn.hivetek.initModal = function() {
+
+        if ($('#modalax-wrap').length == 0) {
+
+            $('body').append(`
+                <div id="modalax-wrap" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalaxLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content animated fadeIn">
+                        <!--
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="modalaxLabel">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        -->
+                        <div class="modal-body">
+                            <!-- AJAX -->
+                        </div>
+                        <!--
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
+                        </div>
+                        -->
+                        </div>
+                    </div>
+                </div>`);
+
+        }
+
+        if ($('#modalax-spinner').length == 0) {
+
+            $('body').append('<div id="modalax-spinner" style="position: fixed; background-color: #666; padding: 18px; border-radius: 8px; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; z-index: 999;"><img src="//cdn.jsdelivr.net/gh/SamHerbert/SVG-Loaders/svg-loaders/spinning-circles.svg" width="58" height="58" alt="..." /></div>');
+
+            // var spinner = new Spin.Spinner({
+            //     lines: 12, // The number of lines to draw
+            //     length: 27, // The length of each line
+            //     width: 15, // The line thickness
+            //     radius: 39, // The radius of the inner circle
+            //     scale: 1, // Scales overall size of the spinner
+            //     corners: 1, // Corner roundness (0..1)
+            //     color: '#7f7f7f', // CSS color or array of colors
+            //     fadeColor: 'transparent', // CSS color or array of colors
+            //     speed: 1, // Rounds per second
+            //     rotate: 0, // The rotation offset
+            //     animation: 'spinner-line-fade-default', // The CSS animation name for the lines
+            //     direction: 1, // 1: clockwise, -1: counterclockwise
+            //     zIndex: 2e9, // The z-index (defaults to 2000000000)
+            //     className: 'spinner', // The CSS class to assign to the spinner
+            //     top: '50%', // Top position relative to parent
+            //     left: '50%', // Left position relative to parent
+            //     shadow: '0 0 1px transparent', // Box-shadow for the lines
+            //     position: 'absolute' // Element positioning
+            // }).spin();
+            // $('#modalax-spinner').append(spinner.el);
+        }
+
+        return true;
+    }
+
     $.fn.hivetek.fixAjaxToken = function() {
 
         $.ajaxSetup({ headers: {

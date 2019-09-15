@@ -64,6 +64,12 @@ $.hivetek.doAjaxFancybox('/example', {'foo': 'bar'}, false); // Open modal.
 $.hivetek.closeModal(); // Close modal.
 ```
 
+### Modal (with Bootstrap)
+
+```javascript
+$.hivetek.doAjaxModal('/example', {'foo': 'bar'}, false); // WIP.
+```
+
 ## Build
 
 ```bash
