@@ -132,10 +132,10 @@
     $.fn.hivetek.doAjaxFancybox = function(url, args, lock, callback, error) {
 
         // Default.
-        args = typeof args !== 'undefined' ? args : {};
-        lock = typeof lock !== 'undefined' ? lock : false;
-        callback = typeof callback !== 'undefined' ? callback : function() {};
-        error = typeof error !== 'undefined' ? error : function() {};
+        var args = typeof args !== 'undefined' ? args : {};
+        var lock = typeof lock !== 'undefined' ? lock : false;
+        var callback = typeof callback !== 'undefined' ? callback : function() {};
+        var error = typeof error !== 'undefined' ? error : function() {};
 
         // Check if fancyBox is loaded.
         if (!$.fancybox) {
@@ -164,8 +164,8 @@
                 e.preventDefault();
                 // var form = $(e.delegateTarget);
                 // var args = form.serialize();
-                var args = new FormData($(this)[0]);
-                $.fn.hivetek.ajaxSubmitFancyboxForm(url, args, lock, callback, error);
+                var post_args = new FormData($(this)[0]);
+                $.fn.hivetek.ajaxSubmitFancyboxForm(url, post_args, lock, callback, error);
 
                 return false;
             });
@@ -186,10 +186,10 @@
     $.fn.hivetek.ajaxSubmitFancyboxForm = function(url, args, lock, callback, error) {
 
         // Default.
-        args = typeof args !== 'undefined' ? args : {};
-        lock = typeof lock !== 'undefined' ? lock : false;
-        callback = typeof callback !== 'undefined' ? callback : function() {};
-        error = typeof error !== 'undefined' ? error : function() {};
+        var args = typeof args !== 'undefined' ? args : {};
+        var lock = typeof lock !== 'undefined' ? lock : false;
+        var callback = typeof callback !== 'undefined' ? callback : function() {};
+        var error = typeof error !== 'undefined' ? error : function() {};
 
         // Lock buttons.
         $('.fancybox-inner form button[type="submit"]').attr('disabled', '');
@@ -217,8 +217,8 @@
                 e.preventDefault();
                 // var form = $(e.delegateTarget);
                 // var args = form.serialize();
-                var args = new FormData($(this)[0]);
-                $.fn.hivetek.ajaxSubmitFancyboxForm(url, args, lock, callback, error);
+                var post_args = new FormData($(this)[0]);
+                $.fn.hivetek.ajaxSubmitFancyboxForm(url, post_args, lock, callback, error);
 
                 return false;
             });
@@ -288,11 +288,11 @@
     $.fn.hivetek.doAjaxModal = function(url, args, lock, callback, error) {
 
         // Default.
-        url = typeof url !== 'undefined' ? url : '';
-        args = typeof args !== 'undefined' ? args : {};
-        lock = typeof lock !== 'undefined' ? lock : false;
-        callback = typeof callback !== 'undefined' ? callback : function() {};
-        error = typeof error !== 'undefined' ? error : function() {};
+        var url = typeof url !== 'undefined' ? url : '';
+        var args = typeof args !== 'undefined' ? args : {};
+        var lock = typeof lock !== 'undefined' ? lock : false;
+        var callback = typeof callback !== 'undefined' ? callback : function() {};
+        var error = typeof error !== 'undefined' ? error : function() {};
 
         $.fn.hivetek.initModal();
 
@@ -318,8 +318,8 @@
                 e.preventDefault();
                 // var form = $(e.delegateTarget);
                 // var args = form.serialize();
-                var args = new FormData($(this)[0]);
-                $.fn.hivetek.doAjaxModalPostForm(url, args, lock, callback, error);
+                var post_args = new FormData($(this)[0]);
+                $.fn.hivetek.doAjaxModalPostForm(url, post_args, lock, callback, error);
 
                 return false;
             });
@@ -342,11 +342,11 @@
     $.fn.hivetek.doAjaxModalPostForm = function(url, args, lock, callback, error) {
 
         // Default.
-        url = typeof url !== 'undefined' ? url : '';
-        args = typeof args !== 'undefined' ? args : {};
-        lock = typeof lock !== 'undefined' ? lock : false;
-        callback = typeof callback !== 'undefined' ? callback : function() {};
-        error = typeof error !== 'undefined' ? error : function() {};
+        var url = typeof url !== 'undefined' ? url : '';
+        var args = typeof args !== 'undefined' ? args : {};
+        var lock = typeof lock !== 'undefined' ? lock : false;
+        var callback = typeof callback !== 'undefined' ? callback : function() {};
+        var error = typeof error !== 'undefined' ? error : function() {};
 
         // Lock buttons.
         $('#hivetek-modal .modal-body form button[type="submit"]').attr('disabled', '');
@@ -375,8 +375,8 @@
                 e.preventDefault();
                 // var form = $(e.delegateTarget);
                 // var args = form.serialize();
-                var args = new FormData($(this)[0]);
-                $.fn.hivetek.doAjaxModalPostForm(url, args, lock, callback, error);
+                var post_args = new FormData($(this)[0]);
+                $.fn.hivetek.doAjaxModalPostForm(url, post_args, lock, callback, error);
 
                 return false;
             });
