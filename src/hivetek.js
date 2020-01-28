@@ -87,7 +87,7 @@
 
             callback(output);
 
-        }).error(function (e) {
+        }).fail(function (e) {
 
             error(e);
             // console.log(e);
