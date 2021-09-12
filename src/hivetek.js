@@ -398,13 +398,35 @@
 
     $.fn.hivetek.showModal = function(output, lock) {
 
-        var modal = $('#hivetek-modal');
-        modal.find('.modal-body').html(output);
+        if ($.fn.tooltip == undefined) {
+            console.log('Twitter Bootstrap JavaScript library is not loaded.');
+            return false;
+        }
 
         var options = {};
         if (lock) {
             options = {backdrop: 'static', keyboard: false};
         }
+
+        var bootstrap_version = $.fn.tooltip.Constructor.VERSION;
+        // console.log(bootstrap_version);
+
+        if (bootstrap_version >= '5') {
+
+            var modal_element = $('#hivetek-modal');
+            var modal = bootstrap.Modal.getInstance(modal_element);
+            if (modal == null) {
+                var modal = new bootstrap.Modal(modal_element, options);
+            }
+            
+            modal_element.find('.modal-body').html(output);
+            modal.show();
+
+            return true;
+        }
+        
+        var modal = $('#hivetek-modal');
+        modal.find('.modal-body').html(output);
 
         modal.modal(options);
 
